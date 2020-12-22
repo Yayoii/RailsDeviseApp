@@ -1,0 +1,896 @@
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateAccounts (20201221041926)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_accounts_on_email" ON "accounts" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_accounts_on_reset_password_token" ON "accounts" ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201221041926"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-12-21 04:20:32.088798"], ["updated_at", "2020-12-21 04:20:32.088798"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /Users/naruseyayoi/.rbenv/versions/2.6.6/bin/rake:23)
+Started GET "/hello/index" for ::1 at 2020-12-21 14:31:52 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1014)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/naruseyayoi/RailsDeviseApp/public/packs
+[Webpacker] Hash: 76145d9ce4575ebaa29b
+Version: webpack 4.44.2
+Time: 1812ms
+Built at: 12/21/2020 2:31:56 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c229f7c7014cf8c8d494.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c229f7c7014cf8c8d494.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c229f7c7014cf8c8d494.js js/application-c229f7c7014cf8c8d494.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 3848ms (Views: 3823.0ms | ActiveRecord: 0.0ms | Allocations: 20319)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:32:26 +0900
+Processing by HelloController#login_check as HTML
+Completed 401 Unauthorized in 31ms (ActiveRecord: 0.0ms | Allocations: 4770)
+
+
+Started GET "/accounts/sign_in" for ::1 at 2020-12-21 14:32:27 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 2.4ms | Allocations: 614)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 27.3ms | Allocations: 3958)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 40.8ms | ActiveRecord: 0.8ms | Allocations: 15698)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:34:09 +0900
+Processing by HelloController#login_check as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 372)
+
+
+Started GET "/accounts/sign_in" for ::1 at 2020-12-21 14:34:09 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 134)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1067)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 5290)
+
+
+Started GET "/accounts/sign_up" for ::1 at 2020-12-21 14:34:56 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.8ms | Allocations: 202)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 124)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1941)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 6870)
+
+
+Started POST "/accounts" for ::1 at 2020-12-21 14:35:36 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"y8b+r6yKDx3PeBGWWZy5nFGwYm7JTkSPbVfpS9QrbvGssXPFXVKdWLl8F1/Owzex7AJi8JP7Yq1B41ieILD49Q==", "account"=>{"email"=>"taro@yamada", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."email" = ? LIMIT ?[0m  [["email", "taro@yamada"], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "taro@yamada"], ["encrypted_password", "$2a$12$FClnO8wkyqxgZaTQbEcViupqPuO9vMB89CPm61G4G245l7R1OXrrC"], ["created_at", "2020-12-21 05:35:36.959101"], ["updated_at", "2020-12-21 05:35:36.959101"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/hello/login_check
+Completed 302 Found in 574ms (ActiveRecord: 3.9ms | Allocations: 11012)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:35:36 +0900
+Processing by HelloController#login_check as HTML
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 435ms (ActiveRecord: 0.3ms | Allocations: 110264)
+
+
+  
+NameError (undefined local variable or method `current_acount' for #<HelloController:0x00007fcecc7cbc10>
+Did you mean?  current_account):
+  
+app/controllers/hello_controller.rb:10:in `login_check'
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:36:07 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HelloController#login_check as HTML
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering hello/login_check.html.erb within layouts/application
+  Rendered hello/login_check.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2161)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 25.2ms | ActiveRecord: 1.6ms | Allocations: 14766)
+
+
+Started GET "/hello/index" for ::1 at 2020-12-21 14:36:25 +0900
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 124)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.0ms | Allocations: 4063)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:36:32 +0900
+Processing by HelloController#login_check as HTML
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering hello/login_check.html.erb within layouts/application
+  Rendered hello/login_check.html.erb within layouts/application (Duration: 0.3ms | Allocations: 90)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 14.4ms | ActiveRecord: 0.3ms | Allocations: 5495)
+
+
+Started GET "/hello/index" for ::1 at 2020-12-21 14:36:34 +0900
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 122)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.0ms | Allocations: 4076)
+
+
+Started DELETE "/accounts/sign_out" for ::1 at 2020-12-21 14:36:36 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E00N9K406pfE7aMcG7RAqvzaR+9OU6UA5uHa1q3fh+/ubl8HonKgcwhe2q2L4hBK0hM8ezSu058jj+WeD/ppPQ=="}
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 0.2ms | Allocations: 3030)
+
+
+Started GET "/" for ::1 at 2020-12-21 14:36:36 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.9ms | Allocations: 189)
+Completed 200 OK in 19ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 1036)
+
+
+Started GET "/hello/" for ::1 at 2020-12-21 14:36:46 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/hello"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/hello/index" for ::1 at 2020-12-21 14:36:48 +0900
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 253)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.0ms | Allocations: 4816)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:36:51 +0900
+Processing by HelloController#login_check as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 379)
+
+
+Started GET "/accounts/sign_in" for ::1 at 2020-12-21 14:36:51 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 531)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1996)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.0ms | Allocations: 7384)
+
+
+Started POST "/accounts/sign_in" for ::1 at 2020-12-21 14:37:06 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"uwWWY7+TJrgCDL+aMFO6/RNx+xnwYk9fJdyZsQAu40WyQ2m6sFV50LTo1V746mphi3KRlgQ4YE9LtFfzxzSOMA==", "account"=>{"email"=>"taro@yamada", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."email" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["email", "taro@yamada"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Update (0.6ms)[0m  [1m[33mUPDATE "accounts" SET "remember_created_at" = ?, "updated_at" = ? WHERE "accounts"."id" = ?[0m  [["remember_created_at", "2020-12-21 05:37:06.571734"], ["updated_at", "2020-12-21 05:37:06.572012"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/hello/login_check
+Completed 302 Found in 318ms (ActiveRecord: 2.4ms | Allocations: 8663)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:37:06 +0900
+Processing by HelloController#login_check as HTML
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering hello/login_check.html.erb within layouts/application
+  Rendered hello/login_check.html.erb within layouts/application (Duration: 1.3ms | Allocations: 218)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 19.4ms | ActiveRecord: 0.3ms | Allocations: 5764)
+
+
+Started GET "/hello/index" for ::1 at 2020-12-21 14:51:21 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 121)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 4417)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:51:24 +0900
+Processing by HelloController#login_check as HTML
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering hello/login_check.html.erb within layouts/application
+  Rendered hello/login_check.html.erb within layouts/application (Duration: 0.3ms | Allocations: 89)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 20.9ms | ActiveRecord: 0.2ms | Allocations: 5534)
+
+
+Started GET "/hello/index" for ::1 at 2020-12-21 14:51:25 +0900
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 119)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.0ms | Allocations: 4090)
+
+
+Started DELETE "/accounts/sign_out" for ::1 at 2020-12-21 14:51:26 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JedigRGDruF/yzIhqLpFx7BYUUgRwEwWIpeN+H4VmlKlmZE/eKjIaWTlzpMJTahjarXTie9QF3VFKc+dq1egWg=="}
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Update (0.8ms)[0m  [1m[33mUPDATE "accounts" SET "remember_created_at" = ?, "updated_at" = ? WHERE "accounts"."id" = ?[0m  [["remember_created_at", nil], ["updated_at", "2020-12-21 05:51:26.538895"], ["id", 1]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 3.8ms | Allocations: 6410)
+
+
+Started GET "/" for ::1 at 2020-12-21 14:51:26 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 15.3ms | Allocations: 184)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms | Allocations: 966)
+
+
+Started GET "/hello/index" for ::1 at 2020-12-21 14:51:36 +0900
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 128)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 4060)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 14:51:41 +0900
+Processing by HelloController#login_check as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 373)
+
+
+Started GET "/accounts/sign_in" for ::1 at 2020-12-21 14:51:41 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 33.6ms | Allocations: 1071)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 39.7ms | ActiveRecord: 0.0ms | Allocations: 5289)
+
+
+Started GET "/accounts/sign_up" for ::1 at 2020-12-21 14:53:00 +0900
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 203)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 526)
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 10.9ms | Allocations: 5234)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 87ms (Views: 49.3ms | ActiveRecord: 0.8ms | Allocations: 19477)
+
+
+Started GET "/accounts/sign_out" for ::1 at 2020-12-21 15:13:35 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/accounts/sign_out"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/hello/sign_out" for ::1 at 2020-12-21 15:13:47 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/hello/sign_out"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/hello/index" for ::1 at 2020-12-21 15:14:02 +0900
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 4991)
+
+
+Started DELETE "/accounts/sign_out" for ::1 at 2020-12-21 15:14:05 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YJHQEXxpMGqnhVrxTFZy1mMMZZ+3RvWkW5ltLEPeWhfFaemddG0p+e8liBNEmSYokegAhHoyxm9bVLtBHuHB+A=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 632)
+
+
+Started GET "/" for ::1 at 2020-12-21 15:14:05 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/naruseyayoi/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.8ms | Allocations: 189)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 1066)
+
+
+Started GET "/hello/index/" for ::1 at 2020-12-21 15:15:06 +0900
+Processing by HelloController#index as HTML
+  Rendering hello/index.html.erb within layouts/application
+  Rendered hello/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 253)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 22.1ms | ActiveRecord: 0.0ms | Allocations: 4847)
+
+
+Started GET "/hello/login_check" for ::1 at 2020-12-21 15:37:08 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HelloController#login_check as HTML
+Completed 401 Unauthorized in 33ms (ActiveRecord: 0.0ms | Allocations: 1330)
+
+
+Started GET "/accounts/sign_in" for ::1 at 2020-12-21 15:37:08 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 4.7ms | Allocations: 620)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 30.1ms | Allocations: 2998)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 189ms (Views: 114.0ms | ActiveRecord: 2.2ms | Allocations: 17404)
+
+
+Started GET "/accounts/sign_in" for ::1 at 2020-12-21 15:43:53 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 4.2ms | Allocations: 520)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.1ms | Allocations: 1919)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 48ms (Views: 46.1ms | ActiveRecord: 0.0ms | Allocations: 7564)
+
+
+Started GET "/accounts/sign_in" for ::1 at 2020-12-21 15:46:19 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 8.6ms | Allocations: 520)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 19.6ms | Allocations: 1918)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 71ms (Views: 67.6ms | ActiveRecord: 0.0ms | Allocations: 7542)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDataPages (20201221065800)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "data_pages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "data" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201221065800"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "yellow"], ["created_at", "2020-12-21 07:07:36.835534"], ["updated_at", "2020-12-21 07:07:36.835534"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "five"], ["created_at", "2020-12-21 07:07:36.854803"], ["updated_at", "2020-12-21 07:07:36.854803"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "green"], ["created_at", "2020-12-21 07:07:36.859154"], ["updated_at", "2020-12-21 07:07:36.859154"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "magenta"], ["created_at", "2020-12-21 07:07:36.863157"], ["updated_at", "2020-12-21 07:07:36.863157"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "nine"], ["created_at", "2020-12-21 07:07:36.867671"], ["updated_at", "2020-12-21 07:07:36.867671"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "seven"], ["created_at", "2020-12-21 07:07:36.871828"], ["updated_at", "2020-12-21 07:07:36.871828"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "eight"], ["created_at", "2020-12-21 07:07:36.876587"], ["updated_at", "2020-12-21 07:07:36.876587"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:36.880906"], ["updated_at", "2020-12-21 07:07:36.880906"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "gray"], ["created_at", "2020-12-21 07:07:36.885141"], ["updated_at", "2020-12-21 07:07:36.885141"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "seven"], ["created_at", "2020-12-21 07:07:36.889549"], ["updated_at", "2020-12-21 07:07:36.889549"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:36.893640"], ["updated_at", "2020-12-21 07:07:36.893640"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "five"], ["created_at", "2020-12-21 07:07:36.898100"], ["updated_at", "2020-12-21 07:07:36.898100"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "zero"], ["created_at", "2020-12-21 07:07:36.902485"], ["updated_at", "2020-12-21 07:07:36.902485"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:36.906627"], ["updated_at", "2020-12-21 07:07:36.906627"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "two"], ["created_at", "2020-12-21 07:07:36.911179"], ["updated_at", "2020-12-21 07:07:36.911179"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:36.915328"], ["updated_at", "2020-12-21 07:07:36.915328"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "nine"], ["created_at", "2020-12-21 07:07:36.919665"], ["updated_at", "2020-12-21 07:07:36.919665"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "black"], ["created_at", "2020-12-21 07:07:36.923946"], ["updated_at", "2020-12-21 07:07:36.923946"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.7ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:36.928217"], ["updated_at", "2020-12-21 07:07:36.928217"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:36.933487"], ["updated_at", "2020-12-21 07:07:36.933487"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.3ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:36.938025"], ["updated_at", "2020-12-21 07:07:36.938025"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "black"], ["created_at", "2020-12-21 07:07:36.942231"], ["updated_at", "2020-12-21 07:07:36.942231"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:36.946549"], ["updated_at", "2020-12-21 07:07:36.946549"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "magenta"], ["created_at", "2020-12-21 07:07:36.954296"], ["updated_at", "2020-12-21 07:07:36.954296"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "gray"], ["created_at", "2020-12-21 07:07:36.959093"], ["updated_at", "2020-12-21 07:07:36.959093"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "one"], ["created_at", "2020-12-21 07:07:36.963417"], ["updated_at", "2020-12-21 07:07:36.963417"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "cyan"], ["created_at", "2020-12-21 07:07:36.967837"], ["updated_at", "2020-12-21 07:07:36.967837"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "nine"], ["created_at", "2020-12-21 07:07:36.971923"], ["updated_at", "2020-12-21 07:07:36.971923"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "black"], ["created_at", "2020-12-21 07:07:36.976115"], ["updated_at", "2020-12-21 07:07:36.976115"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:36.980197"], ["updated_at", "2020-12-21 07:07:36.980197"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.3ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "four"], ["created_at", "2020-12-21 07:07:36.984226"], ["updated_at", "2020-12-21 07:07:36.984226"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "five"], ["created_at", "2020-12-21 07:07:36.988249"], ["updated_at", "2020-12-21 07:07:36.988249"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "nine"], ["created_at", "2020-12-21 07:07:36.992516"], ["updated_at", "2020-12-21 07:07:36.992516"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:36.996510"], ["updated_at", "2020-12-21 07:07:36.996510"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "black"], ["created_at", "2020-12-21 07:07:37.000760"], ["updated_at", "2020-12-21 07:07:37.000760"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "seven"], ["created_at", "2020-12-21 07:07:37.004846"], ["updated_at", "2020-12-21 07:07:37.004846"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "two"], ["created_at", "2020-12-21 07:07:37.008896"], ["updated_at", "2020-12-21 07:07:37.008896"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "magenta"], ["created_at", "2020-12-21 07:07:37.012864"], ["updated_at", "2020-12-21 07:07:37.012864"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "cyan"], ["created_at", "2020-12-21 07:07:37.017122"], ["updated_at", "2020-12-21 07:07:37.017122"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:37.042579"], ["updated_at", "2020-12-21 07:07:37.042579"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "blue"], ["created_at", "2020-12-21 07:07:37.046731"], ["updated_at", "2020-12-21 07:07:37.046731"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "zero"], ["created_at", "2020-12-21 07:07:37.051262"], ["updated_at", "2020-12-21 07:07:37.051262"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "one"], ["created_at", "2020-12-21 07:07:37.055542"], ["updated_at", "2020-12-21 07:07:37.055542"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "five"], ["created_at", "2020-12-21 07:07:37.059710"], ["updated_at", "2020-12-21 07:07:37.059710"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "yellow"], ["created_at", "2020-12-21 07:07:37.064093"], ["updated_at", "2020-12-21 07:07:37.064093"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "yellow"], ["created_at", "2020-12-21 07:07:37.069060"], ["updated_at", "2020-12-21 07:07:37.069060"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "zero"], ["created_at", "2020-12-21 07:07:37.074718"], ["updated_at", "2020-12-21 07:07:37.074718"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "one"], ["created_at", "2020-12-21 07:07:37.079215"], ["updated_at", "2020-12-21 07:07:37.079215"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "black"], ["created_at", "2020-12-21 07:07:37.083673"], ["updated_at", "2020-12-21 07:07:37.083673"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.3ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "blue"], ["created_at", "2020-12-21 07:07:37.088197"], ["updated_at", "2020-12-21 07:07:37.088197"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:37.093015"], ["updated_at", "2020-12-21 07:07:37.093015"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "four"], ["created_at", "2020-12-21 07:07:37.097388"], ["updated_at", "2020-12-21 07:07:37.097388"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:37.101881"], ["updated_at", "2020-12-21 07:07:37.101881"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "zero"], ["created_at", "2020-12-21 07:07:37.106169"], ["updated_at", "2020-12-21 07:07:37.106169"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:37.110682"], ["updated_at", "2020-12-21 07:07:37.110682"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.3ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:37.115046"], ["updated_at", "2020-12-21 07:07:37.115046"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:37.119451"], ["updated_at", "2020-12-21 07:07:37.119451"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "cyan"], ["created_at", "2020-12-21 07:07:37.123690"], ["updated_at", "2020-12-21 07:07:37.123690"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.6ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:37.127840"], ["updated_at", "2020-12-21 07:07:37.127840"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.6ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "six"], ["created_at", "2020-12-21 07:07:37.144441"], ["updated_at", "2020-12-21 07:07:37.144441"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:37.151318"], ["updated_at", "2020-12-21 07:07:37.151318"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.6ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:37.157303"], ["updated_at", "2020-12-21 07:07:37.157303"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "gray"], ["created_at", "2020-12-21 07:07:37.163641"], ["updated_at", "2020-12-21 07:07:37.163641"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:37.169671"], ["updated_at", "2020-12-21 07:07:37.169671"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.7ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "black"], ["created_at", "2020-12-21 07:07:37.175842"], ["updated_at", "2020-12-21 07:07:37.175842"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "six"], ["created_at", "2020-12-21 07:07:37.182268"], ["updated_at", "2020-12-21 07:07:37.182268"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "gray"], ["created_at", "2020-12-21 07:07:37.186735"], ["updated_at", "2020-12-21 07:07:37.186735"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.6ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "two"], ["created_at", "2020-12-21 07:07:37.191680"], ["updated_at", "2020-12-21 07:07:37.191680"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "ten"], ["created_at", "2020-12-21 07:07:37.210027"], ["updated_at", "2020-12-21 07:07:37.210027"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "eight"], ["created_at", "2020-12-21 07:07:37.215011"], ["updated_at", "2020-12-21 07:07:37.215011"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "two"], ["created_at", "2020-12-21 07:07:37.219624"], ["updated_at", "2020-12-21 07:07:37.219624"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "six"], ["created_at", "2020-12-21 07:07:37.224101"], ["updated_at", "2020-12-21 07:07:37.224101"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.6ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "one"], ["created_at", "2020-12-21 07:07:37.228527"], ["updated_at", "2020-12-21 07:07:37.228527"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "two"], ["created_at", "2020-12-21 07:07:37.235555"], ["updated_at", "2020-12-21 07:07:37.235555"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:37.240495"], ["updated_at", "2020-12-21 07:07:37.240495"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:37.246066"], ["updated_at", "2020-12-21 07:07:37.246066"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "zero"], ["created_at", "2020-12-21 07:07:37.251056"], ["updated_at", "2020-12-21 07:07:37.251056"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "four"], ["created_at", "2020-12-21 07:07:37.256263"], ["updated_at", "2020-12-21 07:07:37.256263"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "seven"], ["created_at", "2020-12-21 07:07:37.261160"], ["updated_at", "2020-12-21 07:07:37.261160"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "blue"], ["created_at", "2020-12-21 07:07:37.266394"], ["updated_at", "2020-12-21 07:07:37.266394"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "white"], ["created_at", "2020-12-21 07:07:37.271503"], ["updated_at", "2020-12-21 07:07:37.271503"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "four"], ["created_at", "2020-12-21 07:07:37.276721"], ["updated_at", "2020-12-21 07:07:37.276721"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:37.281439"], ["updated_at", "2020-12-21 07:07:37.281439"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "yellow"], ["created_at", "2020-12-21 07:07:37.288525"], ["updated_at", "2020-12-21 07:07:37.288525"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "magenta"], ["created_at", "2020-12-21 07:07:37.293479"], ["updated_at", "2020-12-21 07:07:37.293479"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "five"], ["created_at", "2020-12-21 07:07:37.297674"], ["updated_at", "2020-12-21 07:07:37.297674"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "yellow"], ["created_at", "2020-12-21 07:07:37.302271"], ["updated_at", "2020-12-21 07:07:37.302271"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:37.306612"], ["updated_at", "2020-12-21 07:07:37.306612"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "three"], ["created_at", "2020-12-21 07:07:37.310960"], ["updated_at", "2020-12-21 07:07:37.310960"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:37.316086"], ["updated_at", "2020-12-21 07:07:37.316086"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "magenta"], ["created_at", "2020-12-21 07:07:37.320668"], ["updated_at", "2020-12-21 07:07:37.320668"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "nine"], ["created_at", "2020-12-21 07:07:37.325808"], ["updated_at", "2020-12-21 07:07:37.325808"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "cyan"], ["created_at", "2020-12-21 07:07:37.332853"], ["updated_at", "2020-12-21 07:07:37.332853"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "eight"], ["created_at", "2020-12-21 07:07:37.337452"], ["updated_at", "2020-12-21 07:07:37.337452"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "red"], ["created_at", "2020-12-21 07:07:37.342093"], ["updated_at", "2020-12-21 07:07:37.342093"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "cyan"], ["created_at", "2020-12-21 07:07:37.346657"], ["updated_at", "2020-12-21 07:07:37.346657"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "yellow"], ["created_at", "2020-12-21 07:07:37.351309"], ["updated_at", "2020-12-21 07:07:37.351309"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "five"], ["created_at", "2020-12-21 07:07:37.355802"], ["updated_at", "2020-12-21 07:07:37.355802"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.5ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "one"], ["created_at", "2020-12-21 07:07:37.360540"], ["updated_at", "2020-12-21 07:07:37.360540"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDataPage Create (0.4ms)[0m  [1m[32mINSERT INTO "data_pages" ("data", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["data", "magenta"], ["created_at", "2020-12-21 07:07:37.365615"], ["updated_at", "2020-12-21 07:07:37.365615"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/data_pages" for ::1 at 2020-12-21 17:06:17 +0900
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DataPagesController#index as HTML
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.5ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 85.2ms | Allocations: 14564)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 189ms (Views: 173.2ms | ActiveRecord: 2.6ms | Allocations: 37693)
+
+
+Started GET "/data_pages?page=2" for ::1 at 2020-12-21 17:06:33 +0900
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"2"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 10]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.3ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 10]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 25.4ms | Allocations: 7440)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 115ms (Views: 113.1ms | ActiveRecord: 0.7ms | Allocations: 11581)
+
+
+Started GET "/data_pages?page=3" for ::1 at 2020-12-21 17:07:11 +0900
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"3"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 20]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.2ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 20]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 22.1ms | Allocations: 6908)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 38.9ms | ActiveRecord: 0.7ms | Allocations: 11046)
+
+
+Started GET "/data_pages?page=5" for ::1 at 2020-12-21 17:07:14 +0900
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"5"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.2ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 24.3ms | Allocations: 7523)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 30.8ms | ActiveRecord: 1.5ms | Allocations: 11670)
+
+
+Started GET "/data_pages?page=5" for ::1 at 2020-12-21 17:09:19 +0900
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"5"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.3ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 7511)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 56.7ms | ActiveRecord: 1.0ms | Allocations: 21479)
+
+
+Started GET "/data_pages?page=5" for ::1 at 2020-12-21 17:09:50 +0900
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"5"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.4ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 20.5ms | Allocations: 7523)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 91.5ms | ActiveRecord: 1.1ms | Allocations: 21815)
+
+
+Started GET "/data_pages?page=5" for ::1 at 2020-12-21 17:10:10 +0900
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"5"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.3ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 61.9ms | Allocations: 7512)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 103ms (Views: 99.3ms | ActiveRecord: 2.5ms | Allocations: 21409)
+
+
+Started GET "/data_pages?page=5" for ::1 at 2020-12-21 17:10:28 +0900
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"5"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.3ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 40]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 21.9ms | Allocations: 7511)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 70ms (Views: 67.6ms | ActiveRecord: 1.0ms | Allocations: 21854)
+
+
+Started GET "/data_pages?page=3" for ::1 at 2020-12-22 16:48:53 +0900
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DataPagesController#index as HTML
+  Parameters: {"page"=>"3"}
+  Rendering data_pages/index.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "data_pages" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 10], ["OFFSET", 20]]
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "data_pages"[0m
+  ↳ app/views/data_pages/index.html.erb:6
+  [1m[36mDataPage Load (0.8ms)[0m  [1m[34mSELECT "data_pages".* FROM "data_pages" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 20]]
+  ↳ app/views/data_pages/index.html.erb:6
+  Rendered data_pages/index.html.erb within layouts/application (Duration: 246.6ms | Allocations: 16009)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 712ms (Views: 650.0ms | ActiveRecord: 5.1ms | Allocations: 39838)
+
+

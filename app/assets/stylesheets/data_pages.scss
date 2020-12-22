@@ -1,0 +1,9 @@
+// Place all the styles related to the data_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body { font-size: 20px; }
+.page { padding: 5px; border:1px red solid; }
+.first { padding: 5px; border:1px lightblue solid; }
+.prev { padding: 5px; border:1px lightblue solid; }
+.next { padding: 5px; border:1px red solid; }
+.last { padding: 5px; border:1px rgb(199, 173, 100) solid; }
