@@ -13,7 +13,7 @@ class BoardMessagesController < ApplicationController
       user.account_id = current_account.id
       user.nickname = '<<no name>>'
       user.save
-      users = BoardUser.where('account_id == ?', current_account.id)
+      users = BoardUser.where 'account_id == ?', current_account.id
     end
     @board_user = users
     @board_message = BoardMessage.new
